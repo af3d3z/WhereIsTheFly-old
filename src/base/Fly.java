@@ -7,6 +7,13 @@ package base;
  * */
 public class Fly {
 	/**
+	 * List of possible names for the flies
+	 */
+	private String[] nameList = {
+		"Gaga", "Lindsay", "Eusebio", "Kafka", "Jeff Goldbloom", "Jennifer", "Ana L.M.", "Pepa the fool", "Flygon"	
+	};
+	
+	/**
 	 * Health points of the fly
 	 */
 	private int healthPoints;
@@ -50,5 +57,30 @@ public class Fly {
 	 * */
 	public String getName() {
 		return this.name;
+	}
+	
+	/**
+	 * Gets a random name from nameList
+	 * @return Random name
+	 * */
+	public String getRandomName() {
+		return nameList[(int) Math.random() * nameList.length];	     
+	}
+	
+	/**
+	 * Give random health points to the fly
+	 * @return 
+	 * */
+	public int getRandomHealthPoints() {
+		int hp = 1 + ((int) Math.random() * 2);
+		return hp;
+	}
+	
+	/**
+	 * Constructor con nombres y puntos de vida aleatorios
+	 * */
+	public Fly () {
+		this.name = getRandomName();
+		this.healthPoints = getRandomHealthPoints();
 	}
 }
