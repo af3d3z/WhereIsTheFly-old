@@ -4,7 +4,7 @@ package base;
  * MainCode class
  * @author Group5
  */
-public class MainCode {
+public class Main {
 
 	/**
 	 * Main function
