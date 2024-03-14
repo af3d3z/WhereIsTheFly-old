@@ -8,3 +8,8 @@ TODO:
 - [ ] If the fly is next to the position the board was hitted the fly will flutter and change its position to an empty cell.
 - [ ] The player will choose how many flies will be in the board.
 - [ ] If no flies are left at the board the player wins.
+### Optional
+- [ ] Implement a power-up system with different power-ups.
+- [ ] Implement random health points for every fly.
+- [ ] Point-like system and rewards.
+
