@@ -1,5 +1,7 @@
 package base;
 
+import board.items.BoardItems;
+
 /**
  * Class that simulates the board where the flies are gonna be, the unofficial "base" of the game
  * 
@@ -11,7 +13,7 @@ public class Board {
 	/**
 	 * Bidimensional array where all the flies and power ups and downs are going to be placed
 	 */
-	public static Object[][] gameBoard;
+	public static BoardItems[][] gameBoard;
 	
 	/* Constructors */
 	/**
@@ -48,8 +50,26 @@ public class Board {
 		//this.gameBoard = new Object[axisI][axisJ];
 		
 			/* Version 2 */
-		this.gameBoard = new Object[randomAxisI][randomAxisJ];
+		this.gameBoard = new BoardItems[randomAxisI][randomAxisJ];
 		
 	}//Fin Constructor With Parameters
+	
+	/* Setter */
+	/**
+	 * We ought to fill the cells with something
+	 * 
+	 * @param item Some kind of board item to fill the cell with
+	 * @param posI The position of the cell on the I axis
+	 * @param posJ The position of the cell on the J axis
+	 */
+	public void setBoardCell(BoardItems item, int posI, int posJ) {
+		
+		gameBoard[posI][posJ] = item;
+		
+	}//Fin setBoardCell()
+	
+	/* Methods */
+	
+	//spublic boolean areThereFlies
 	
 }

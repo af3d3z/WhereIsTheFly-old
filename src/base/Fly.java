@@ -1,11 +1,14 @@
 package base;
+
+import board.items.BoardItems;
+
 /**
  * Class that represents a Fly. 
  * It contains healthpoints and name attributes.
  * @author Alonso
  * @author Nestor
  * */
-public class Fly {
+public class Fly extends BoardItems{
 	/**
 	 * Health points of the fly
 	 */
