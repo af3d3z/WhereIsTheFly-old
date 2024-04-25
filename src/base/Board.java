@@ -1,5 +1,7 @@
 package base;
 
+import java.util.ArrayList;
+
 import base.board.items.BoardItems;
 
 /**
@@ -13,7 +15,22 @@ public class Board {
 	/**
 	 * Bidimensional array where all the flies and power ups and downs are going to be placed
 	 */
-	public static BoardItems[][] gameBoard;
+	protected BoardItems[][] gameBoard;
+	
+	/**
+	 * 1-dimensional array list with dinamic length to access the flies on the board quickly
+	 */
+	protected ArrayList<Fly> flyArray = new ArrayList<Fly>();
+	
+	/**
+	 * Hit radius of the flycatcher
+	 */
+	protected int areaRadius = 0;
+	
+	/**
+	 * Hit damage of the flycatcher
+	 */
+	protected int hitDamage = 1;
 	
 	/* Constructors */
 	/**
@@ -23,16 +40,6 @@ public class Board {
 	 */
 	public Board(int difficulty) {
 		
-		//Depending on the difficulty we size the game board
-		/* Declaring */
-			/* Version 1 */
-			/* Size of Axis I */
-		//int axisI = (int) (Math.pow(difficulty, 2) + 2);
-		
-			/* Size of Axis J */
-		//int axisJ = (int) (Math.pow(difficulty,2) + 2);
-		
-			/* Version 2 */
 			/* Base of Axis I */
 		int randomPowerAxisI = (int) (Math.random()*4 + 2);
 			
@@ -46,11 +53,13 @@ public class Board {
 		int randomAxisJ = (int) Math.pow(randomPowerAxisJ, difficulty);
 		
 		//Now we set the size
-			/* Version 1 */
-		//this.gameBoard = new Object[axisI][axisJ];
-		
-			/* Version 2 */
 		this.gameBoard = new BoardItems[randomAxisI][randomAxisJ];
+		
+		//Lets generate the flies
+		this.generateFlies();
+		
+		//Now lets fill the board with'em
+		this.fillBoard();
 		
 	}//Fin Constructor With Parameters
 	
@@ -69,7 +78,144 @@ public class Board {
 	}//Fin setBoardCell()
 	
 	/* Methods */
+	/**
+	 * Method that returns true if there's a fly int the given position
+	 * 
+	 * @param posI The position of the cell on the I axis
+	 * @param posJ The position of the cell on the J axis
+	 * @return thereIsFly True if there's indeed a fly or false if not
+	 */
+	public boolean isThereFlyHere(int posI, int posJ) {
+		
+		/* PCC */
+		/* Boolean to return */
+		boolean thereIsFly = false;
+		
+		/* Checking */
+		/* Lets go through the Fly Array seeking if the fly on the array is equal to the one at the position */
+		for(Fly flutter: this.flyArray) {
+			
+			//If to seek similarity
+			if(flutter.equals(gameBoard[posI][posJ])) {
+				
+				thereIsFly = true;
+				
+			}//Fin IF --> Checking if equals
+			
+		}//Fin FOR --> Flies running through
+		
+		/* Return Statement */
+		return thereIsFly;
+		
+	}//Fin isThereFlyHere?
 	
-	//spublic boolean areThereFlies
+	/**
+	 * Filling method, it generates the flies and inserts them into the board
+	 * 
+	 * @param difficulty Difficulty of the Game
+	 */
+	protected void fillBoard() {
+		
+		/* Random position on the I axis */
+		int randPosI;
+		
+		/* Random position on the J axis */
+		int randPosJ;
+		
+		/* Size of axis I */
+		int sizeI = this.gameBoard.length;
+		
+		/* Size of axis J */
+		int sizeJ = this.gameBoard[0].length;
+		
+		/* Flag to continue the loop */
+		boolean flag;
+		
+		/* Let's go through the flyArray inserting flies */
+		for(Fly flutter: flyArray) {
+			
+			//Reset of the flag
+			flag = true;
+			
+			while(flag) {
+				
+				//Random asignation of position
+				randPosI = (int) (Math.random()*sizeI);
+				randPosJ = (int) (Math.random()*sizeJ);
+				
+				//Lets see if there is a fly already there
+				if(!this.isThereFlyHere(randPosI, randPosJ)) {
+					
+					//Let's insert it!!!
+					this.gameBoard[randPosI][randPosJ] = flutter;
+					
+					//Flag goes weeee
+					flag = false;
+					
+				}//Fin IF --> Checking for flies already there
+				
+			}//Fin WHILE --> Inserting loop
+				
+		}//Fin FOR --> Going through the flies
+		
+	}//Fin fillBoard()
+
+	/**
+	 * Method to generate the flies
+	 */
+	protected void generateFlies() {
+		
+		/* PCC */
+		/* Number of flies that are gonna be inserted
+		 * It's gonna be equal to 25% of the total of cells */
+		int totalFlies = (int) (this.gameBoard.length * this.gameBoard[0].length * 0.25);
+		
+		/* Fly to add declaration */
+		Fly flutter;
+		
+		/* Lets fill first the fly array */
+		for(int i = 0; i < totalFlies; i++) {
+			
+			//Let's construct the fly
+			flutter = new Fly();
+			
+			//And add it to the array
+			this.flyArray.add(flutter); //here you add the fly
+			
+		}//Fin FOR --> Stuffing fly array
+		
+	}//Fin generateFlies()
+	
+	/**
+	 * Method to print the board
+	 */
+	public void printingBoard() {
+		
+		/* Counter: cell number */
+		int count = 1;
+		
+		/* String to print */
+		String toPrint = "";
+		
+		/* Lets go through the I axis */
+		for(int i = 0; i < this.gameBoard.length; i++) {
+			
+			/* Now, through the J axis */
+			for(int j = 0; j < this.gameBoard[i].length; j++) {
+				
+				toPrint += "[" + count + "]";
+				
+				count += 1;
+				
+			}//Fin FOR --> Axis J
+			
+			toPrint += "\n";
+			
+		}//Fin FOR --> Axis I
+		
+		//Printing
+		System.out.println(toPrint);
+		
+	}//Fin printingBoard()
 	
 }
