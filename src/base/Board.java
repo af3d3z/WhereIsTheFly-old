@@ -41,13 +41,13 @@ public class Board {
 	public Board(int difficulty) {
 		
 			/* Base of Axis I */
-		int randomPowerAxisI = (int) (Math.random()*4 + 2);
+		int randomPowerAxisI = (int) (Math.random()*2 + 2);
 			
 			/* Size of Axis I */
 		int randomAxisI = (int) Math.pow(randomPowerAxisI, difficulty);
 		
 			/* Base of Axis J */
-		int randomPowerAxisJ = (int) (Math.random()*4 + 2);
+		int randomPowerAxisJ = (int) (Math.random()*2 + 2);
 			
 			/* Size of Axis I */
 		int randomAxisJ = (int) Math.pow(randomPowerAxisJ, difficulty);
