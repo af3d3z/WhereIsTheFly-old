@@ -199,42 +199,38 @@ public class Board {
 	 * 
 	 * @param posI: position I from the array
 	 * @param posJ: position J from the array
-	 * @return if a fly has been catched or not
+	 * @return catched If a fly has been catched or not
 	 */
 	public boolean catchFly(int posI, int posJ) {
 
 		// Boolean catched: indicates if the fly has been hit or not
-		boolean catched = false;
-
+		boolean caught = false;
+		
+		/* Fly declaration */
+		Fly flutter;
+		
 		// Check if the fly has been catched or not
-		catched = this.isThereFlyHere(posI, posJ);
+		caught = this.isThereFlyHere(posI, posJ);
 
 		// If: if the fly has been catched:
-		if (catched) {
+		if (caught) {
 
-			// For Each: loop through flyArray and check which fly has been hit
-			for (Fly flutter : flyArray) {
+			flutter = (Fly) this.gameBoard[posI][posJ];
+			
+			flutter.hitFly(hitDamage);
 
-				// If the fly's position coincides with the one that has been hit...
-				if (flutter.equals(gameBoard[posI][posJ])) {
-
-					// Reduce the points via hitFly
-					flutter.hitFly(hitDamage);
-
-					// If: if the health points are 0, the fly will be removed.
-					if (flutter.getHealthPoints() < 1) {
-						gameBoard[posI][posJ] = null;
-						flyArray.remove(flutter);
-					} // End If
-
-				} // End If
-
-			} // End For Each
+			// If: if the health points are 0, the fly will be removed.
+			if (flutter.getHealthPoints() < 1) {
+				gameBoard[posI][posJ] = null;
+				flyArray.remove(flutter);
+			} // End If
+			
+			this.gameBoard[posI][posJ] = flutter;
 
 		} // End If
 
 		// Return the variable catched
-		return catched;
+		return caught;
 
 	}
 
