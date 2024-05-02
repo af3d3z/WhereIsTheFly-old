@@ -9,6 +9,7 @@ import base.board.items.BoardItems;
  * "base" of the game
  * 
  * @author DragonaEileen
+ * @author nestor
  */
 public class Board {
 
@@ -83,6 +84,7 @@ public class Board {
 	/* Methods */
 	/**
 	 * Method that returns true if there's a fly int the given position
+	 * Method made by Eileen
 	 * 
 	 * @param posI The position of the cell on the I axis
 	 * @param posJ The position of the cell on the J axis
@@ -117,6 +119,7 @@ public class Board {
 
 	/**
 	 * Filling method, it generates the flies and inserts them into the board
+	 * Method made by Eileen
 	 * 
 	 * @param difficulty Difficulty of the Game
 	 */
@@ -168,6 +171,7 @@ public class Board {
 
 	/**
 	 * Method to generate the flies
+	 * Method made by Eileen
 	 */
 	protected void generateFlies() {
 
@@ -196,6 +200,7 @@ public class Board {
 
 	/**
 	 * Method to catch a fly given the position
+	 * Method made by Nestor and Eileen
 	 * 
 	 * @param posI: position I from the array
 	 * @param posJ: position J from the array
@@ -238,6 +243,7 @@ public class Board {
 
 	/**
 	 * Method to print the board
+	 * Method made by Nestor and Eileen
 	 */
 	public void printingBoard() {
 
