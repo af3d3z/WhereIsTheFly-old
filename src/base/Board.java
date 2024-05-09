@@ -83,8 +83,8 @@ public class Board {
 
 	/* Methods */
 	/**
-	 * Method that returns true if there's a fly int the given position
-	 * Method made by Eileen
+	 * Method that returns true if there's a fly int the given position Method made
+	 * by Eileen
 	 * 
 	 * @param posI The position of the cell on the I axis
 	 * @param posJ The position of the cell on the J axis
@@ -118,8 +118,8 @@ public class Board {
 	}// Fin isThereFlyHere?
 
 	/**
-	 * Filling method, it generates the flies and inserts them into the board
-	 * Method made by Eileen
+	 * Filling method, it generates the flies and inserts them into the board Method
+	 * made by Eileen
 	 * 
 	 * @param difficulty Difficulty of the Game
 	 */
@@ -170,8 +170,7 @@ public class Board {
 	}// Fin fillBoard()
 
 	/**
-	 * Method to generate the flies
-	 * Method made by Eileen
+	 * Method to generate the flies Method made by Eileen
 	 */
 	protected void generateFlies() {
 
@@ -199,8 +198,7 @@ public class Board {
 	}// Fin generateFlies()
 
 	/**
-	 * Method to catch a fly given the position
-	 * Method made by Nestor and Eileen
+	 * Method to catch a fly given the position Method made by Nestor and Eileen
 	 * 
 	 * @param posI: position I from the array
 	 * @param posJ: position J from the array
@@ -210,10 +208,10 @@ public class Board {
 
 		// Boolean catched: indicates if the fly has been hit or not
 		boolean caught = false;
-		
+
 		/* Fly declaration */
 		Fly flutter;
-		
+
 		// Check if the fly has been catched or not
 		caught = this.isThereFlyHere(posI, posJ);
 
@@ -221,7 +219,7 @@ public class Board {
 		if (caught) {
 
 			flutter = (Fly) this.gameBoard[posI][posJ];
-			
+
 			flutter.hitFly(hitDamage);
 
 			// If: if the health points are 0, the fly will be removed.
@@ -229,7 +227,7 @@ public class Board {
 				gameBoard[posI][posJ] = null;
 				flyArray.remove(flutter);
 			} // End If
-			
+
 			this.gameBoard[posI][posJ] = flutter;
 
 		} // End If
@@ -242,8 +240,7 @@ public class Board {
 	// PRINT METHODS
 
 	/**
-	 * Method to print the board
-	 * Method made by Nestor and Eileen
+	 * Method to print the board Method made by Nestor and Eileen
 	 */
 	public void printingBoard() {
 
@@ -256,7 +253,7 @@ public class Board {
 			/* Now, through the J axis */
 			for (int j = 0; j < this.gameBoard[i].length; j++) {
 
-				toPrint += "[" + i + "," + j + "]";
+				toPrint += "[" + i + "," + (char) ('a' + j) + "]";
 
 			} // Fin FOR --> Axis J
 
